@@ -1,0 +1,18 @@
+#crear namespace
+kubectl apply -f 00-namespace.yaml
+
+#crear el deploy con el yaml ya configurado
+kubectl -n ace11 apply -f 01-deployment-loadbalancer.yaml
+
+#revisar que ip externa a sido asignada
+kubectl -n ace11 get all
+
+/*
+NAME                        TYPE           CLUSTER-IP       EXTERNAL-IP       PORT(S)        AGE
+service/ace11holamundo-lb   LoadBalancer   10.245.176.229   143.244.198.247   80:32626/TCP   7m25s
+
+*/
+
+#acceder a la calculadora
+POST
+http://143.244.198.247/ejemplo01_holamundo/v1/mensaje

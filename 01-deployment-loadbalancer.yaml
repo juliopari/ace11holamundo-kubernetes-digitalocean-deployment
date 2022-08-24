@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ace11holamundo
+spec:
+  selector:
+    matchLabels:
+      app: ace11holamundo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ace11holamundo
+    spec:
+      containers:
+      - name: ace11holamundo 
+        image: juliopari/ace11holamundo:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 7800
+        env:
+        - name: LICENSE
+          value: accept
+        - name: ACE_SERVER_NAME
+          value: ACESERVER
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ace11holamundo-lb
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/do-loadbalancer-algorithm: "least_connections"
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 7800
+    protocol: TCP
+  selector:
+    app: ace11holamundo

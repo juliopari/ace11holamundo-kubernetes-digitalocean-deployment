@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "d6101fc8-0584-484e-8b30-3137c70129e7",
+		"name": "SESION_03",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3256611"
+	},
+	"item": [
+		{
+			"name": "digital-acean",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Marias\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://143.244.198.247/ejemplo01_holamundo/v1/mensaje",
+					"protocol": "http",
+					"host": [
+						"143",
+						"244",
+						"198",
+						"247"
+					],
+					"path": [
+						"ejemplo01_holamundo",
+						"v1",
+						"mensaje"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
